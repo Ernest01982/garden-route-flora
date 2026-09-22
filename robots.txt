@@ -1,0 +1,12 @@
+# Garden Route Flora - Robots.txt
+# https://gardenrouteflora.co.za
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://gardenrouteflora.co.za/sitemap.xml
+
+# Disallow admin/internal paths (future use)
+Disallow: /admin/
+Disallow: /api/
