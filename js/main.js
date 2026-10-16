@@ -105,72 +105,98 @@ function initBackToTop() {
 
 /* ---------- Gallery Lightbox ---------- */
 function initLightbox() {
-  const galleryItems = document.querySelectorAll('.gallery-item');
+  const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
   const lightbox = document.querySelector('.lightbox');
   if (galleryItems.length === 0 || !lightbox) return;
 
   const lightboxImg = lightbox.querySelector('.lightbox__img');
+  const caption = lightbox.querySelector('.lightbox__caption');
   const closeBtn = lightbox.querySelector('.lightbox__close');
   const prevBtn = lightbox.querySelector('.lightbox__nav--prev');
   const nextBtn = lightbox.querySelector('.lightbox__nav--next');
+  if (!lightboxImg || !closeBtn) return;
 
   let currentIndex = 0;
-  const images = [];
+  let visibleItems = [];
+  let returnFocus = null;
+  let previousOverflow = '';
+  let backgroundElements = [];
 
-  galleryItems.forEach((item, i) => {
-    const img = item.querySelector('img');
-    if (img) {
-      images.push({
-        src: img.dataset.full || img.src,
-        alt: img.alt
-      });
-
-      item.addEventListener('click', () => {
-        currentIndex = i;
-        openLightbox();
-      });
-    }
+  galleryItems.forEach(item => {
+    if (!item.querySelector('img')) return;
+    item.addEventListener('click', () => openLightbox(item));
   });
 
-  function openLightbox() {
-    lightboxImg.src = images[currentIndex].src;
-    lightboxImg.alt = images[currentIndex].alt;
+  function showImage() {
+    const item = visibleItems[currentIndex];
+    const img = item.querySelector('img');
+    lightboxImg.src = img.dataset.full || img.src;
+    lightboxImg.alt = img.alt;
+    if (caption) {
+      caption.textContent = `${currentIndex + 1} of ${visibleItems.length} — ${item.dataset.caption || img.alt}`;
+    }
+    if (prevBtn) prevBtn.disabled = visibleItems.length < 2;
+    if (nextBtn) nextBtn.disabled = visibleItems.length < 2;
+  }
+
+  function openLightbox(item) {
+    visibleItems = galleryItems.filter(entry => !entry.hidden && entry.querySelector('img'));
+    currentIndex = visibleItems.indexOf(item);
+    if (currentIndex < 0) return;
+    returnFocus = item;
+    previousOverflow = document.body.style.overflow;
+    showImage();
+    lightbox.hidden = false;
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+    backgroundElements = Array.from(document.body.children)
+      .filter(element => element !== lightbox && element.tagName !== 'SCRIPT')
+      .map(element => ({ element, wasInert: element.inert }));
+    backgroundElements.forEach(({ element }) => { element.inert = true; });
   }
 
   function closeLightbox() {
     lightbox.classList.remove('active');
-    document.body.style.overflow = '';
+    lightbox.hidden = true;
+    document.body.style.overflow = previousOverflow;
+    backgroundElements.forEach(({ element, wasInert }) => { element.inert = wasInert; });
+    if (returnFocus && returnFocus.isConnected) returnFocus.focus();
   }
 
-  function showPrev() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    lightboxImg.src = images[currentIndex].src;
-    lightboxImg.alt = images[currentIndex].alt;
+  function moveImage(direction) {
+    currentIndex = (currentIndex + direction + visibleItems.length) % visibleItems.length;
+    showImage();
   }
 
-  function showNext() {
-    currentIndex = (currentIndex + 1) % images.length;
-    lightboxImg.src = images[currentIndex].src;
-    lightboxImg.alt = images[currentIndex].alt;
-  }
+  closeBtn.addEventListener('click', closeLightbox);
+  if (prevBtn) prevBtn.addEventListener('click', () => moveImage(-1));
+  if (nextBtn) nextBtn.addEventListener('click', () => moveImage(1));
 
-  if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
-  if (prevBtn) prevBtn.addEventListener('click', showPrev);
-  if (nextBtn) nextBtn.addEventListener('click', showNext);
-
-  // Close on overlay click
   lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) closeLightbox();
   });
 
-  // Keyboard navigation
   document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('active')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') showPrev();
-    if (e.key === 'ArrowRight') showNext();
+    if (lightbox.hidden) return;
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeLightbox();
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+      e.preventDefault();
+      moveImage(e.key === 'ArrowLeft' ? -1 : 1);
+    } else if (e.key === 'Tab') {
+      const controls = Array.from(lightbox.querySelectorAll('button:not(:disabled)'));
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (e.shiftKey && (document.activeElement === first || !lightbox.contains(document.activeElement))) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (document.activeElement === last || !lightbox.contains(document.activeElement))) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
   });
 }
 
@@ -205,32 +231,34 @@ function initAccordion() {
 }
 
 
-/* ---------- Filter Tabs (Cycads Page) ---------- */
+/* ---------- Collection and Gallery Filters ---------- */
 function initFilterTabs() {
-  const tabs = document.querySelectorAll('.filter-tab');
-  const cards = document.querySelectorAll('.species-card');
-  if (tabs.length === 0 || cards.length === 0) return;
+  document.querySelectorAll('.filter-tabs').forEach(group => {
+    const tabs = Array.from(group.querySelectorAll('[data-filter]'));
+    const section = group.closest('section');
+    if (!section || tabs.length === 0) return;
+    const cards = Array.from(section.querySelectorAll('.gallery-item[data-category], .species-card[data-category]'));
+    const status = section.querySelector('.gallery-status');
+    if (cards.length === 0) return;
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      // Update active tab
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-
-      const filter = tab.dataset.filter;
-
-      cards.forEach(card => {
-        if (filter === 'all' || card.dataset.category === filter) {
-          card.style.display = '';
-          // Re-trigger animation
-          card.classList.remove('visible');
-          void card.offsetWidth; // Force reflow
-          card.classList.add('visible');
-        } else {
-          card.style.display = 'none';
-        }
+    function applyFilter(tab) {
+      tabs.forEach(button => {
+        const isSelected = button === tab;
+        button.classList.toggle('active', isSelected);
+        button.setAttribute('aria-pressed', String(isSelected));
       });
-    });
+      cards.forEach(card => {
+        const categories = card.dataset.category.split(/\s+/);
+        card.hidden = tab.dataset.filter !== 'all' && !categories.includes(tab.dataset.filter);
+      });
+      if (status) {
+        const count = cards.filter(card => !card.hidden).length;
+        status.textContent = `${count} ${count === 1 ? 'photo' : 'photos'} · ${tab.textContent.trim()}`;
+      }
+    }
+
+    tabs.forEach(tab => tab.addEventListener('click', () => applyFilter(tab)));
+    applyFilter(tabs.find(tab => tab.classList.contains('active')) || tabs[0]);
   });
 }
 
@@ -238,7 +266,9 @@ function initFilterTabs() {
 /* ---------- Smooth scroll for anchor links ---------- */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
+    const hash = this.getAttribute('href');
+    if (!hash || hash === '#') return;
+    const target = document.getElementById(hash.slice(1));
     if (target) {
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth' });

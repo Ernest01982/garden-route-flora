@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Cycads — Encephalartos Collection | Garden Route Flora</title>
-  <meta name="description" content="Explore our collection of legally propagated South African Encephalartos species. Buy cycads (broodboom) from our specialist nursery in the Garden Route.">
-  <meta property="og:title" content="Our Cycads — Encephalartos Collection | Garden Route Flora">
-  <meta property="og:description" content="Explore our collection of legally propagated South African Encephalartos species. Buy cycads (broodboom) from our specialist nursery in the Garden Route.">
+  <title>Our Cycads | Garden Route Flora</title>
+  <meta name="description" content="Our nursery stocks two types of cycads. Browse photographs from Garden Route Flora and contact us for current names, sizes and availability.">
+  <meta property="og:title" content="Our Cycads | Garden Route Flora">
+  <meta property="og:description" content="Our nursery stocks two types of cycads. Browse photographs from Garden Route Flora and contact us for current names, sizes and availability.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ernest01982.github.io/garden-route-flora/images/nursery/87943.jpg">
   <link rel="canonical" href="https://gardenrouteflora.co.za/cycads.html">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +17,7 @@
   
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="cycads-page">
   <!-- Navbar -->
   <nav class="navbar">
     <div class="container">
@@ -41,165 +42,61 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero hero--short">
-    <div class="hero-bg">
-      <img src="images/species-collection.jpg" alt="Collection of cycad species" loading="eager">
+  <main>
+  <!-- Photographs from the nursery; botanical names await owner confirmation. -->
+  <header class="hero hero--short nursery-hero">
+    <div class="hero__bg">
+      <img src="images/nursery/87943.jpg" srcset="images/nursery/87943-640.jpg 640w, images/nursery/87943.jpg 1280w" sizes="100vw" alt="Rows of potted cycads at the nursery" width="1280" height="960" fetchpriority="high">
     </div>
-    <div class="hero-content container">
-      <h1 class="hero-title">Our Cycad Collection</h1>
-      <p class="hero-subtitle">ENCEPHALARTOS SPECIES</p>
+    <div class="hero__overlay"></div>
+    <div class="hero__content container">
+      <p class="hero__subtitle">Grown at Garden Route Flora</p>
+      <h1 class="hero__title">Our Cycads</h1>
+      <p class="hero__description">A closer look at the plants in our nursery.</p>
+      <a href="#our-cycads" class="btn btn--secondary">Explore the nursery</a>
+    </div>
+  </header>
+
+  <section class="section nursery-intro" id="our-cycads" aria-labelledby="stock-heading">
+    <div class="container nursery-feature">
+      <figure class="nursery-feature__photo">
+        <img src="images/nursery/87921.jpg" srcset="images/nursery/87921-640.jpg 640w, images/nursery/87921.jpg 960w" sizes="(max-width: 700px) calc(100vw - 48px), 560px" alt="Cycad with arching green fronds in a nursery pot" loading="lazy" decoding="async" width="960" height="1280">
+        <figcaption>A closer look at our nursery-grown cycads.</figcaption>
+      </figure>
+      <div class="nursery-feature__copy">
+        <p class="nursery-eyebrow">From our nursery</p>
+        <h2 id="stock-heading">Two types. A love for cycads.</h2>
+        <p>We stock two types of cycads at Garden Route Flora. Explore these photographs of our plants, from individual specimens to rows growing in the nursery.</p>
+        <p>Contact us for the names of the two types, current sizes, prices and availability. We can help you choose a cycad for your garden or collection.</p>
+        <a href="contact.html" class="btn btn--primary">Enquire about our cycads</a>
+        <a href="care-guide.html" class="nursery-text-link">Read our cycad care guide &rarr;</a>
+      </div>
     </div>
   </section>
 
-  <!-- Intro Section -->
-  <section class="section intro-section container reveal">
-    <div class="intro-content text-center">
-      <h2>Preserving Living Fossils</h2>
-      <p>Our nursery specializes in the cultivation of rare and spectacular South African <em>Encephalartos</em> species. Every cycad we grow is seed-propagated, legal, and comes with all necessary TOPS (Threatened or Protected Species) permits. From striking blue-leaf specimens to magnificent large landscape features, our collection represents decades of passion and dedication to these ancient plants.</p>
-    </div>
-  </section>
-
-  <!-- Cycad Collection Section -->
-  <section class="section collection-section container reveal">
-    <!-- Filter Tabs -->
-    <div class="filter-tabs">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="green">Green Leaf</button>
-      <button class="filter-btn" data-filter="blue">Blue Leaf</button>
-      <button class="filter-btn" data-filter="dwarf">Dwarf</button>
-      <button class="filter-btn" data-filter="large">Large</button>
-    </div>
-
-    <!-- Species Grid -->
-    <div class="species-grid">
-      <!-- Species 1 -->
-      <div class="species-card" data-category="green large">
-        <img class="species-card__image" src="images/cycad-closeup.jpg" alt="Encephalartos altensteinii" loading="lazy">
-        <div class="species-card__body">
-          <h3 class="species-card__title">Eastern Cape Cycad</h3>
-          <p class="species-card__latin"><em>Encephalartos altensteinii</em></p>
-          <p class="species-card__desc">One of the most common and robust species. Features a tall trunk and bright green leaves, making it a spectacular focal point for large gardens.</p>
-          <div class="species-card__tags">
-            <span class="tag tag--green">Green</span>
-            <span class="tag tag--size">Large</span>
-            <span class="tag tag--sun">Full Sun</span>
-          </div>
-          <a href="contact.html?subject=Encephalartos+altensteinii" class="btn btn-outline">Enquire</a>
-        </div>
+  <section class="section section--sand nursery-photographs" aria-labelledby="photos-heading">
+    <div class="container">
+      <div class="section-header">
+        <p class="nursery-eyebrow">A view from the nursery</p>
+        <h2 id="photos-heading">Among the fronds</h2>
+        <div class="divider"></div>
+        <p>Explore the shapes, textures and growing spaces in our nursery.</p>
       </div>
-
-      <!-- Species 2 -->
-      <div class="species-card" data-category="blue dwarf">
-        <img class="species-card__image" src="images/cone-detail.jpg" alt="Encephalartos horridus" loading="lazy">
-        <div class="species-card__body">
-          <h3 class="species-card__title">Eastern Cape Blue Cycad</h3>
-          <p class="species-card__latin"><em>Encephalartos horridus</em></p>
-          <p class="species-card__desc">A highly prized, striking silvery-blue cycad with distinctly spiny leaves. A magnificent collector's piece that requires excellent drainage.</p>
-          <div class="species-card__tags">
-            <span class="tag tag--blue">Blue</span>
-            <span class="tag tag--size">Dwarf</span>
-            <span class="tag tag--drought">Drought Hardy</span>
-          </div>
-          <a href="contact.html?subject=Encephalartos+horridus" class="btn btn-outline">Enquire</a>
-        </div>
+      <div class="nursery-photo-grid">
+        <figure>
+          <img src="images/nursery/87935.jpg" srcset="images/nursery/87935-640.jpg 640w, images/nursery/87935.jpg 1280w" sizes="(max-width: 700px) calc(100vw - 48px), 560px" alt="A potted cycad with broad green leaves" loading="lazy" decoding="async" width="1280" height="960">
+          <figcaption>Foliage up close</figcaption>
+        </figure>
+        <figure>
+          <img src="images/nursery/87949.jpg" srcset="images/nursery/87949-640.jpg 640w, images/nursery/87949.jpg 1280w" sizes="(max-width: 700px) calc(100vw - 48px), 560px" alt="An overview of potted cycads growing together at the nursery" loading="lazy" decoding="async" width="1280" height="960">
+          <figcaption>Growing together</figcaption>
+        </figure>
+        <figure>
+          <img src="images/nursery/87941.jpg" srcset="images/nursery/87941-640.jpg 640w, images/nursery/87941.jpg 960w" sizes="(max-width: 700px) calc(100vw - 48px), 560px" alt="Green cycad fronds among the nursery plants" loading="lazy" decoding="async" width="960" height="1280">
+          <figcaption>In the nursery</figcaption>
+        </figure>
       </div>
-
-      <!-- Species 3 -->
-      <div class="species-card" data-category="blue large">
-        <img class="species-card__image" src="images/species-collection.jpg" alt="Encephalartos lehmannii" loading="lazy">
-        <div class="species-card__body">
-          <h3 class="species-card__title">Karoo Cycad</h3>
-          <p class="species-card__latin"><em>Encephalartos lehmannii</em></p>
-          <p class="species-card__desc">Known for its beautiful blue-grey leaves and incredible drought hardiness. Perfect for water-wise gardens and harsh climates.</p>
-          <div class="species-card__tags">
-            <span class="tag tag--blue">Blue</span>
-            <span class="tag tag--size">Large</span>
-            <span class="tag tag--drought">Drought Hardy</span>
-          </div>
-          <a href="contact.html?subject=Encephalartos+lehmannii" class="btn btn-outline">Enquire</a>
-        </div>
-      </div>
-
-      <!-- Species 4 -->
-      <div class="species-card" data-category="green dwarf">
-        <img class="species-card__image" src="images/care-watering.jpg" alt="Encephalartos villosus" loading="lazy">
-        <div class="species-card__body">
-          <h3 class="species-card__title">Poor Man's Cycad</h3>
-          <p class="species-card__latin"><em>Encephalartos villosus</em></p>
-          <p class="species-card__desc">A delightful shade-tolerant species with glossy dark green leaves. Fast-growing and perfect for planting under tree canopies.</p>
-          <div class="species-card__tags">
-            <span class="tag tag--green">Green</span>
-            <span class="tag tag--size">Dwarf</span>
-            <span class="tag tag--shade">Partial Shade</span>
-          </div>
-          <a href="contact.html?subject=Encephalartos+villosus" class="btn btn-outline">Enquire</a>
-        </div>
-      </div>
-
-      <!-- Species 5 -->
-      <div class="species-card" data-category="green large">
-        <img class="species-card__image" src="images/cycad-closeup.jpg" alt="Encephalartos transvenosus" loading="lazy">
-        <div class="species-card__body">
-          <h3 class="species-card__title">Modjadji Cycad</h3>
-          <p class="species-card__latin"><em>Encephalartos transvenosus</em></p>
-          <p class="species-card__desc">The tallest South African cycad, capable of reaching 13 meters. A sacred tree with magnificent broad, dark green leaves.</p>
-          <div class="species-card__tags">
-            <span class="tag tag--green">Green</span>
-            <span class="tag tag--size">Large</span>
-            <span class="tag tag--sun">Full Sun</span>
-          </div>
-          <a href="contact.html?subject=Encephalartos+transvenosus" class="btn btn-outline">Enquire</a>
-        </div>
-      </div>
-
-      <!-- Species 6 -->
-      <div class="species-card" data-category="green dwarf">
-        <img class="species-card__image" src="images/cone-detail.jpg" alt="Encephalartos ferox" loading="lazy">
-        <div class="species-card__body">
-          <h3 class="species-card__title">Zululand Cycad</h3>
-          <p class="species-card__latin"><em>Encephalartos ferox</em></p>
-          <p class="species-card__desc">Instantly recognizable by its glossy, holly-like leaves and spectacular, bright red-orange cones. Thrives in coastal conditions.</p>
-          <div class="species-card__tags">
-            <span class="tag tag--green">Green</span>
-            <span class="tag tag--size">Dwarf</span>
-            <span class="tag tag--shade">Partial Shade</span>
-          </div>
-          <a href="contact.html?subject=Encephalartos+ferox" class="btn btn-outline">Enquire</a>
-        </div>
-      </div>
-
-      <!-- Species 7 -->
-      <div class="species-card" data-category="green large">
-        <img class="species-card__image" src="images/species-collection.jpg" alt="Encephalartos natalensis" loading="lazy">
-        <div class="species-card__body">
-          <h3 class="species-card__title">Natal Cycad</h3>
-          <p class="species-card__latin"><em>Encephalartos natalensis</em></p>
-          <p class="species-card__desc">A majestic, fast-growing cycad with graceful arching leaves. Relatively easy to grow and an excellent landscaping choice.</p>
-          <div class="species-card__tags">
-            <span class="tag tag--green">Green</span>
-            <span class="tag tag--size">Large</span>
-            <span class="tag tag--sun">Full Sun</span>
-          </div>
-          <a href="contact.html?subject=Encephalartos+natalensis" class="btn btn-outline">Enquire</a>
-        </div>
-      </div>
-
-      <!-- Species 8 -->
-      <div class="species-card" data-category="blue dwarf">
-        <img class="species-card__image" src="images/care-watering.jpg" alt="Encephalartos trispinosus" loading="lazy">
-        <div class="species-card__body">
-          <h3 class="species-card__title">Three-spined Cycad</h3>
-          <p class="species-card__latin"><em>Encephalartos trispinosus</em></p>
-          <p class="species-card__desc">A highly ornamental species featuring compact blue-green foliage. Beautiful clumping habit that makes it perfect for rockeries.</p>
-          <div class="species-card__tags">
-            <span class="tag tag--blue">Blue</span>
-            <span class="tag tag--size">Dwarf</span>
-            <span class="tag tag--drought">Drought Hardy</span>
-          </div>
-          <a href="contact.html?subject=Encephalartos+trispinosus" class="btn btn-outline">Enquire</a>
-        </div>
-      </div>
+      <div class="nursery-gallery-link"><a href="gallery.html" class="btn btn--outline-green">View all nursery photographs</a></div>
     </div>
   </section>
 
@@ -223,9 +120,11 @@
     <div class="container">
       <h2>Interested in a Cycad?</h2>
       <p>Whether you're a seasoned collector or looking for your first specimen, we'd love to help you find the perfect plant.</p>
-      <a href="contact.html" class="btn btn-primary">Get in Touch</a>
+      <a href="contact.html" class="btn btn--primary">Get in Touch</a>
     </div>
   </section>
+
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
