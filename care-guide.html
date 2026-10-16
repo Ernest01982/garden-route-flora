@@ -15,7 +15,7 @@
   
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="care-page">
 
   <!-- Navbar -->
   <nav class="navbar">
@@ -42,27 +42,26 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero hero--short">
-    <div class="hero-bg">
-      <img src="images/care-watering.jpg" alt="Watering cycads" class="hero-img">
+  <header class="hero hero--short">
+    <div class="hero__bg">
+      <img src="images/care-watering.jpg" alt="Watering cycads" fetchpriority="high">
     </div>
-    <div class="container">
-      <div class="hero-content">
-        <h1>Cycad Care Guide</h1>
-        <p class="subtitle">TIPS & TRICKS FOR THRIVING BROODBOME</p>
-      </div>
+    <div class="hero__overlay"></div>
+    <div class="container hero__content">
+      <h1 class="hero__title">Cycad Care Guide</h1>
+      <p class="hero__subtitle">TIPS & TRICKS FOR THRIVING BROODBOME</p>
     </div>
-  </section>
+  </header>
 
   <!-- Intro -->
-  <section class="section reveal">
+  <section class="section">
     <div class="container container--narrow text-center">
       <p class="lead-text">Whether you're a seasoned collector or just brought home your first broodboom, proper care makes all the difference for these ancient plants to thrive for generations to come.</p>
     </div>
   </section>
 
   <!-- Care Grid -->
-  <section class="section bg-light reveal">
+  <section class="section bg-light">
     <div class="container">
       <h2 class="text-center section-title">Essential Care Guidelines</h2>
       
@@ -162,7 +161,7 @@
   </section>
 
   <!-- Warning Signs -->
-  <section class="section reveal">
+  <section class="section">
     <div class="container">
       <h2 class="text-center section-title">Watch for Warning Signs</h2>
       
@@ -192,58 +191,58 @@
   </section>
 
   <!-- FAQ Accordion -->
-  <section class="section bg-light reveal" id="faq">
+  <section class="section bg-light" id="faq">
     <div class="container container--narrow">
       <h2 class="text-center section-title">Frequently Asked Questions</h2>
       
-      <div class="faq-accordion">
-        <div class="faq-item">
-          <h3 class="faq-question">How often should I water my cycad?</h3>
-          <div class="faq-answer">
+      <div class="care-faq">
+        <details class="care-faq__item">
+          <summary class="care-faq__question">How often should I water my cycad?<span class="care-faq__icon" aria-hidden="true">+</span></summary>
+          <div class="care-faq__answer">
             <p>Water deeply during the spring and summer growing season, allowing the top inch of soil to dry out between waterings. In winter, reduce watering significantly, perhaps only once every few weeks depending on rainfall.</p>
           </div>
-        </div>
+        </details>
         
-        <div class="faq-item">
-          <h3 class="faq-question">Can cycads grow in shade?</h3>
-          <div class="faq-answer">
+        <details class="care-faq__item">
+          <summary class="care-faq__question">Can cycads grow in shade?<span class="care-faq__icon" aria-hidden="true">+</span></summary>
+          <div class="care-faq__answer">
             <p>Yes, many green-leaf species tolerate partial to full shade (though not deep gloom). Blue-leaf species typically require more direct sunlight to thrive and maintain their striking color.</p>
           </div>
-        </div>
+        </details>
         
-        <div class="faq-item">
-          <h3 class="faq-question">Do I need a permit to own a cycad?</h3>
-          <div class="faq-answer">
+        <details class="care-faq__item">
+          <summary class="care-faq__question">Do I need a permit to own a cycad?<span class="care-faq__icon" aria-hidden="true">+</span></summary>
+          <div class="care-faq__answer">
             <p>In South Africa, all indigenous cycads (Encephalartos species) require a permit for possession, transport, or sale. Exotic species generally do not. We supply the necessary documentation for all our indigenous plants.</p>
           </div>
-        </div>
+        </details>
         
-        <div class="faq-item">
-          <h3 class="faq-question">How fast do cycads grow?</h3>
-          <div class="faq-answer">
+        <details class="care-faq__item">
+          <summary class="care-faq__question">How fast do cycads grow?<span class="care-faq__icon" aria-hidden="true">+</span></summary>
+          <div class="care-faq__answer">
             <p>Cycads are famously slow-growing. Some species may only produce one flush of leaves per year, while others might flush twice. Trunk growth is often measured in millimeters per year.</p>
           </div>
-        </div>
+        </details>
         
-        <div class="faq-item">
-          <h3 class="faq-question">Are cycads poisonous to pets?</h3>
-          <div class="faq-answer">
+        <details class="care-faq__item">
+          <summary class="care-faq__question">Are cycads poisonous to pets?<span class="care-faq__icon" aria-hidden="true">+</span></summary>
+          <div class="care-faq__answer">
             <p>Yes, all parts of the cycad are highly toxic to dogs, cats, and humans if ingested, particularly the seeds. Keep pets away from chewing on the leaves or eating the seeds.</p>
           </div>
-        </div>
+        </details>
         
-        <div class="faq-item">
-          <h3 class="faq-question">When do cycads produce cones?</h3>
-          <div class="faq-answer">
+        <details class="care-faq__item">
+          <summary class="care-faq__question">When do cycads produce cones?<span class="care-faq__icon" aria-hidden="true">+</span></summary>
+          <div class="care-faq__answer">
             <p>Cycads must reach maturity to produce cones, which can take 10-20 years. Once mature, they generally cone in the spring or summer, though not necessarily every year.</p>
           </div>
-        </div>
+        </details>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="cta-banner reveal">
+  <section class="cta-banner">
     <div class="container text-center">
       <h2>Need Help With Your Cycad?</h2>
       <p>We're Here to Help. Contact us for expert advice or plant health concerns.</p>
